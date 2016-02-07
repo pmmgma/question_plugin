@@ -19,6 +19,9 @@ class Question < ActiveRecord::Base
   scope :for_user, lambda {|user|
      where(:assigned_to_id => user.id)
   }
+  scope :for_user_or_any, lambda {|user| 
+      where( "assigned_to_id=? OR assigned_to_id IS NULL" , user)
+  }
   scope :by_user, lambda {|user|
      where(:author_id => user.id)
   }

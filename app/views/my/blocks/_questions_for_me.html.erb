@@ -1,4 +1,4 @@
-<% questions = Question.opened.for_user(User.current) %>
+<% questions = Question.opened.for_user_or_any(User.current) %>
 <h3><%= l(:text_questions_for_me)%> (<%= h(questions.length) %>)</h3>
 
 <% if questions && questions.any? %>
@@ -6,6 +6,8 @@
     <thead><tr>
     <th><%=l(:field_project)%></th>
     <th><%=l(:field_issue)%></th>
+    <th><%=l(:question_text_asked_by)%></th>
+    <th><%=l(:question_text_asked_to)%></th>
     <th><%=l(:text_question)%></th>
     </tr></thead>
     <tbody> 
@@ -13,6 +15,8 @@
     <tr id="question-<%= question.id %>" class="<%= cycle('odd', 'even') %>">
       <td class="project"><%= link_to_project(question.issue.project) %></td>
       <td class="issue"><%= link_to_issue(question.issue, :project => false) %></td>
+      <td class="issue"><%= link_to_user(question.author) %></td>
+      <td class="issue"><%= link_to_user(question.assigned_to) %></td>
       <td class="question-content">
         <%= link_to h(truncate(question.notes, :length => 60)), :controller => 'issues', :action => 'show', :id => question.issue %>
       </td>

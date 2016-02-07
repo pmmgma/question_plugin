@@ -1,4 +1,4 @@
-<% questions = Question.opened.not_hidden.for_user(User.current) %>
+<% questions = Question.opened.not_hidden.for_user_or_any(User.current) %>
 <% if questions && questions.any? %>
 <div class="flash question">
   <h3><%= l(:text_questions_for_me)%> (<%= h(questions.length) %>)</h3>
@@ -7,7 +7,7 @@
     <li>
       <%= link_to_issue(question.issue, :project => true, :subject => false) %>: 
       <%= truncate(question.notes, :length => 120) %> 
-      <%= link_to l(:label_question_plugin_hide), hide_path(question) %>
+      <%= link_to l(:label_question_plugin_hide), hide_path(question, :id => question.issue_id) %>
     </li>
     <% end %>
   </ol>

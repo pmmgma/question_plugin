@@ -24,7 +24,7 @@ JS
         return o
       end
     
-      def view_issues_edit_notes_bottom(context = { })
+      def self.view_issues_edit_notes_bottom(context = { })
         f      = context[:form]
         @issue = context[:issue]
         o      = ''
@@ -44,7 +44,7 @@ JS
         return o
       end
     
-      def controller_issues_edit_before_save(context = { })
+      def self.controller_issues_edit_before_save(context = { })
         params  = context[:params]
         journal = context[:journal]
         issue   = context[:issue]
@@ -78,7 +78,7 @@ JS
         return ''
       end
     
-      def view_issues_sidebar_issues_bottom(context = { })
+      def self.view_issues_sidebar_issues_bottom(context = { })
         project = context[:project]
         if project
           question_count = Question.count_of_open_for_user_on_project(User.current, project)
@@ -92,7 +92,7 @@ JS
                              :controller => 'issuequestions',
                              :action     => 'my_issue_filter',
                              :project    => project,
-                             :only_path  => true
+                             :only_path  => false
                          },
                          { :class => 'question-link' }
           ) + '<br />'.html_safe
@@ -104,7 +104,7 @@ JS
     
       private
     
-      def assign_question_to_user(journal, user)
+      def self.assign_question_to_user(journal, user)
         journal.question.assigned_to = user
       end
     end
