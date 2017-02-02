@@ -1,4 +1,4 @@
-en:
+cs:
   field_question_assign_to: Přiřadit otázku
   field_question_assigned_to: Otázka přiřazena
   field_question_asked_by: Otázku položil
@@ -13,6 +13,7 @@ en:
   text_question_asked: Položené otázky
   text_question_remove: "<< Odstranit Otázku>>"
   question_text_asked_by: "Položeno"
+  question_text_asked_to: "Přiřazeno"
   question_text_assigned_to: "Přiřazeno"
   question_text_created_on: "Vytvořeno"
   question_text_ratio_questions_answered: "{{ratio}} zodpovězených otázek"
